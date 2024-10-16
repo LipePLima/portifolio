@@ -15,17 +15,13 @@ import {
 import { getMyRepos } from "./request";
 
 const HomePage = () => {
-  const [repos, setRepos] = useState<unknown>(null);
+  const [, setRepos] = useState<unknown>(null);
 
   const navigate = useNavigate();
 
   useEffect(() => {
     fetchRepos();
   }, []);
-
-  useEffect(() => {
-    console.log(repos);
-  }, [repos]);
 
   const fetchRepos = async () => {
     const response = await getMyRepos();
