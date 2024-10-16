@@ -1,21 +1,41 @@
 import imgTecs from "../../assets/tecIconsImage.png";
 import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 import {
   AboutMeButton,
+  ContainerMyProjects,
+  ContainerTechnologies,
   ContainerTitle,
   ContainerTitleSection,
   ImageIconsTec,
-  Main,
   MyName,
+  SecondaryTitle,
   Title,
 } from "./style";
+import { getMyRepos } from "./request";
 
 const HomePage = () => {
+  const [repos, setRepos] = useState<unknown>(null);
+
   const navigate = useNavigate();
+
+  useEffect(() => {
+    fetchRepos();
+  }, []);
+
+  useEffect(() => {
+    console.log(repos);
+  }, [repos]);
+
+  const fetchRepos = async () => {
+    const response = await getMyRepos();
+
+    setRepos(response);
+  };
 
   return (
     <>
-      <Main>
+      <main>
         <ContainerTitleSection>
           <ContainerTitle>
             <MyName>Felipe Pereira de Lima</MyName>
@@ -34,7 +54,11 @@ const HomePage = () => {
             alt="Imagem com icones 3D das minhas principais stacks"
           />
         </ContainerTitleSection>
-      </Main>
+        <ContainerTechnologies></ContainerTechnologies>
+        <ContainerMyProjects>
+          <SecondaryTitle>Meus Projetos</SecondaryTitle>
+        </ContainerMyProjects>
+      </main>
     </>
   );
 };
