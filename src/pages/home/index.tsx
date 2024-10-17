@@ -1,21 +1,25 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import imgTecs from "../../assets/tecIconsImage.png";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { getMyRepos } from "./request";
+import { RepoDTO } from "../../utils/interfaces";
+import { Card } from "../../components";
 import {
   AboutMeButton,
   ContainerMyProjects,
   ContainerTechnologies,
   ContainerTitle,
   ContainerTitleSection,
+  ContentMyProjects,
   ImageIconsTec,
   MyName,
   SecondaryTitle,
   Title,
 } from "./style";
-import { getMyRepos } from "./request";
 
 const HomePage = () => {
-  const [, setRepos] = useState<unknown>(null);
+  const [myProjects, setMyProjects] = useState<RepoDTO[] | null>(null);
 
   const navigate = useNavigate();
 
@@ -26,7 +30,7 @@ const HomePage = () => {
   const fetchRepos = async () => {
     const response = await getMyRepos();
 
-    setRepos(response);
+    setMyProjects(response);
   };
 
   return (
@@ -42,7 +46,7 @@ const HomePage = () => {
               label="Sobre Mim"
               severity="info"
               outlined
-              onClick={() => navigate("/sobreMim")}
+              onClick={() => navigate("/aboutMe")}
             />
           </ContainerTitle>
           <ImageIconsTec
@@ -53,6 +57,16 @@ const HomePage = () => {
         <ContainerTechnologies></ContainerTechnologies>
         <ContainerMyProjects>
           <SecondaryTitle>Meus Projetos</SecondaryTitle>
+          <ContentMyProjects>
+            {myProjects &&
+              myProjects.map((repo: RepoDTO, index: number) => {
+                return (
+                  <Card projectName={repo.name} image={repo.name} key={index}>
+                    <p>Exemplo</p>
+                  </Card>
+                );
+              })}
+          </ContentMyProjects>
         </ContainerMyProjects>
       </main>
     </>

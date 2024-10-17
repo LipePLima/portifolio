@@ -1,4 +1,4 @@
-import CarrosselComponent from "./carrossel";
-import HeaderComponent from "./header";
+import Header from "./header";
+import Card from "./card";
 
-export { HeaderComponent, CarrosselComponent };
+export { Header, Card };

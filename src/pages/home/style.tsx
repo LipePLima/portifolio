@@ -75,3 +75,11 @@ export const ContainerMyProjects = styled.section`
   margin: 5rem 0;
   padding: 0 5rem;
 `;
+
+export const ContentMyProjects = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+`;
+
