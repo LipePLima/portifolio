@@ -1,4 +1,4 @@
 import Header from "./header";
-import Card from "./card";
+import Loading from "./loading";
 
-export { Header, Card };
+export { Header, Loading };

@@ -1,6 +1,7 @@
 import { Button } from "primereact/button";
 import styled from "styled-components";
 import slideTechs from "../../assets/slideTechs.png";
+import { Card } from "primereact/card";
 
 export const ContainerTitleSection = styled.section`
   display: flex;
@@ -78,8 +79,54 @@ export const ContainerMyProjects = styled.section`
 
 export const ContentMyProjects = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
   margin-top: 2rem;
 `;
 
+export const CardProject = styled(Card)`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 360px;
+  padding: 1rem;
+  background-color: #2d2d2d;
+  color: #f3f4f6;
+
+  .p-card-body {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  .p-card-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-transform: capitalize;
+  }
+
+  .p-card-subtitle {
+    color: #f3f4f6;
+    margin-top: 0.5rem;
+  }
+
+  .p-card-content {
+    flex-grow: 1;
+  }
+
+  .p-card-footer {
+    width: 100%;
+    align-self: flex-end;
+    margin-top: auto;
+  }
+`;
+
+export const DateProject = styled.p`
+  margin-top: 0.5rem;
+  font-size: 0.875rem;
+`;
+
+export const CardDescription = styled.p`
+  line-height: 22px;
+  margin: 1rem 0;
+`;

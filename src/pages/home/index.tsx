@@ -3,15 +3,20 @@ import imgTecs from "../../assets/tecIconsImage.png";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getMyRepos } from "./request";
-import { RepoDTO } from "../../utils/interfaces";
-import { Card } from "../../components";
+import { ProjectDTO } from "../../utils/interfaces";
+import { Button } from "primereact/button";
+import formatDate from "../../utils/convertDate";
+import { Loading } from "../../components";
 import {
   AboutMeButton,
+  CardDescription,
+  CardProject,
   ContainerMyProjects,
   ContainerTechnologies,
   ContainerTitle,
   ContainerTitleSection,
   ContentMyProjects,
+  DateProject,
   ImageIconsTec,
   MyName,
   SecondaryTitle,
@@ -19,18 +24,26 @@ import {
 } from "./style";
 
 const HomePage = () => {
-  const [myProjects, setMyProjects] = useState<RepoDTO[] | null>(null);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [myProjects, setMyProjects] = useState<ProjectDTO[] | null>(null);
 
   const navigate = useNavigate();
 
   useEffect(() => {
     fetchRepos();
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const fetchRepos = async () => {
-    const response = await getMyRepos();
+    const response = await getMyRepos(setLoading);
 
     setMyProjects(response);
+  };
+
+  const filterProjects = (project: ProjectDTO) => {
+    const excludedKeywords = ["frontend", "backend", "admin"];
+    return !excludedKeywords.some((keyword) => project.name.includes(keyword));
   };
 
   return (
@@ -57,16 +70,50 @@ const HomePage = () => {
         <ContainerTechnologies></ContainerTechnologies>
         <ContainerMyProjects>
           <SecondaryTitle>Meus Projetos</SecondaryTitle>
-          <ContentMyProjects>
-            {myProjects &&
-              myProjects.map((repo: RepoDTO, index: number) => {
-                return (
-                  <Card projectName={repo.name} image={repo.name} key={index}>
-                    <p>Exemplo</p>
-                  </Card>
-                );
-              })}
-          </ContentMyProjects>
+          {loading && <Loading />}
+          {!loading && (
+            <ContentMyProjects>
+              {myProjects &&
+                myProjects
+                  .filter(filterProjects)
+                  .map((project: ProjectDTO, index: number) => {
+                    return (
+                      <CardProject
+                        key={index}
+                        title={project.name}
+                        subTitle={
+                          project.owner.login !== "LipePLima"
+                            ? "Participação"
+                            : "Autoria"
+                        }
+                        footer={
+                          <Button
+                            style={{ width: "100%" }}
+                            label="Ver mais"
+                            icon="pi pi-info-circle"
+                            onClick={() =>
+                              navigate(`/projeto/${project.name}`, {
+                                state: {
+                                  name: project.name,
+                                },
+                              })
+                            }
+                          />
+                        }
+                      >
+                        <DateProject>
+                          {formatDate(project.created_at)}
+                        </DateProject>
+                        <CardDescription>
+                          {project.description
+                            ? project.description
+                            : "Sem descrição"}
+                        </CardDescription>
+                      </CardProject>
+                    );
+                  })}
+            </ContentMyProjects>
+          )}
         </ContainerMyProjects>
       </main>
     </>
