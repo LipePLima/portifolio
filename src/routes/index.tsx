@@ -1,7 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import { FC } from "react";
 import { HomePage, AboutMePage } from "../pages";
-import ProjectDetails from "../pages/project";
+import ProjectDetails from "../pages/projectDetails";
 
 const RoutesComponent: FC = () => {
   return (

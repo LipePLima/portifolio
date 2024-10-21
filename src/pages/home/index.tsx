@@ -38,6 +38,8 @@ const HomePage = () => {
   const fetchRepos = async () => {
     const response = await getMyRepos(setLoading);
 
+    console.log(response);
+
     setMyProjects(response);
   };
 
@@ -70,12 +72,19 @@ const HomePage = () => {
         <ContainerTechnologies></ContainerTechnologies>
         <ContainerMyProjects>
           <SecondaryTitle>Meus Projetos</SecondaryTitle>
-          {loading && <Loading />}
+          {loading && <Loading height="100%" />}
           {!loading && (
             <ContentMyProjects>
               {myProjects &&
                 myProjects
                   .filter(filterProjects)
+                  .sort((a: ProjectDTO, b: ProjectDTO) => {
+                    // Comparar as datas para ordenar do mais novo ao mais antigo
+                    return (
+                      new Date(b.created_at).getTime() -
+                      new Date(a.created_at).getTime()
+                    );
+                  })
                   .map((project: ProjectDTO, index: number) => {
                     return (
                       <CardProject

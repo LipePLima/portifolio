@@ -1,9 +1,13 @@
 import { ProgressSpinner } from "primereact/progressspinner";
 import { ContentLoading, TextLoading } from "./style";
 
-const LoadingComponent = () => {
+interface Props {
+  height: string
+}
+
+const LoadingComponent = ({ height }: Props) => {
   return (
-    <ContentLoading>
+    <ContentLoading style={{ height: `${height}` }}>
       <ProgressSpinner />
       <TextLoading>Carregando...</TextLoading>
     </ContentLoading>

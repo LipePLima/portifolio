@@ -1,9 +1,8 @@
+// import axios from "axios";
 import axios from "axios";
 import api from "../../service/api";
 
-export const getMyProjectByName = async (
-  name: string,
-): Promise<void> => {
+export const getMyProjectByName = async (name: string): Promise<void> => {
   try {
     const response = await api.get(`/repos/LipePLima/${name}`);
 
@@ -25,11 +24,15 @@ export const getRepoReadme = async (name: string) => {
       },
     });
 
+    console.log("RESPONSE >>>>>>", response);
+
+    if (typeof response.data === "string") {
+      return response.data;
+    }
+
     const readmeContent = await axios.get(response.data.download_url);
 
     return readmeContent.data;
-
-    // return readmeData.data;
   } catch (error) {
     console.error("Erro ao buscar o README:", error);
   }

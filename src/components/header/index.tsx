@@ -11,8 +11,13 @@ import {
   Header,
   IconButton,
 } from "./style";
+import { GoogleTranslate } from "..";
+import { useState } from "react";
 
 const HeaderComponent = () => {
+  const [showOptionsTranslate, setShowOptionsTranslate] =
+    useState<boolean>(false);
+
   return (
     <>
       <Header>
@@ -55,9 +60,12 @@ const HeaderComponent = () => {
           </a>
         </ContainerSocialMedias>
         <ContainerTranslatorButton>
-          <IconButton>
+          <IconButton
+            onClick={() => setShowOptionsTranslate((prevValue) => !prevValue)}
+          >
             <BsTranslate />
           </IconButton>
+          {showOptionsTranslate && <GoogleTranslate />}
         </ContainerTranslatorButton>
       </Header>
     </>
