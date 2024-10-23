@@ -2,11 +2,18 @@ import styled from "styled-components";
 
 export const Header = styled.header`
   position: fixed;
-  z-index: 1000;
   display: flex;
   justify-content: space-between;
   width: 100%;
   padding: 2rem 1rem;
+
+  @media screen and (max-width: 1080px) {
+    padding: 2rem .5rem;
+  }
+  
+  @media screen and (max-width: 500px) {
+    padding: 2rem .3rem;
+  }
 `;
 
 export const ContainerSocialMedias = styled.div`
@@ -29,5 +36,9 @@ export const IconButton = styled.button`
   &:hover {
     color: #60a5fa;
     transform: scale(1.05);
+  }
+
+  @media screen and (max-width: 500px) {
+    font-size: 24px;
   }
 `;

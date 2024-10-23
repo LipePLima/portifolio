@@ -9,7 +9,7 @@ export const getMyRepos = async (
   try {
     const response = await api.get("/user/repos", {
       params: {
-        per_page: 40,
+        per_page: 50,
         page: 1,
       },
     });
