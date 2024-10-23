@@ -7,16 +7,19 @@ import emoji from "emoji-dictionary";
 import { Loading } from "../../components";
 import { ProjectsImagesArray } from "../../utils/arrayImages";
 import {
+  DeskContainer,
   FramesContainer,
   ImageFrame,
-  IphoneFrame,
-  IphoneImageContainer,
-  NoteBookFrame,
-  NoteBookImageContainer,
+  PhoneImageContent,
+  PhoneContainer,
+  Image,
+  DeskImageContent,
   ProjectDetailsSection,
   ReadMeContainer,
 } from "./style";
 import { Button } from "primereact/button";
+import deskFrame from "../../assets/deskFrame.png";
+import phoneFrame from "../../assets/phoneFrame.png";
 
 const ProjectDetails = () => {
   const [loading, setLoading] = useState<boolean>(true);
@@ -84,18 +87,22 @@ const ProjectDetails = () => {
           {(imagesPath.imageDeskPath || imagesPath.imageMobilePath) && (
             <FramesContainer>
               {imagesPath.imageDeskPath && (
-                <NoteBookFrame>
-                  <NoteBookImageContainer>
-                    <ImageFrame src={imagesPath.imageDeskPath} alt="" />
-                  </NoteBookImageContainer>
-                </NoteBookFrame>
+                <>
+                  <DeskContainer>
+                    <ImageFrame src={deskFrame} />
+                    <DeskImageContent>
+                      <Image src={imagesPath.imageDeskPath} alt="" />
+                    </DeskImageContent>
+                  </DeskContainer>
+                </>
               )}
               {imagesPath.imageMobilePath && (
-                <IphoneFrame>
-                  <IphoneImageContainer>
-                    <ImageFrame src={imagesPath.imageMobilePath} alt="" />
-                  </IphoneImageContainer>
-                </IphoneFrame>
+                <PhoneContainer>
+                  <ImageFrame src={phoneFrame} />
+                  <PhoneImageContent>
+                    <Image src={imagesPath.imageMobilePath} alt="" />
+                  </PhoneImageContent>
+                </PhoneContainer>
               )}
             </FramesContainer>
           )}

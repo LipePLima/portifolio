@@ -1,9 +1,7 @@
 import styled from "styled-components";
-import notbookFrame from "../../assets/notbookFrame.png";
-import iphoneFrame from "../../assets/iphoneFrame.png";
 
 export const ProjectDetailsSection = styled.section`
-  padding: 2rem 5rem;
+  padding: 2rem 1rem;
 `;
 
 export const FramesContainer = styled.div`
@@ -11,52 +9,99 @@ export const FramesContainer = styled.div`
   justify-content: center;
   align-items: center;
   gap: 15%;
-  height: 650px;
   margin-bottom: 2.5rem;
+  flex-wrap: wrap;
+
+  @media (max-width: 1024px) {
+    gap: 5%;
+  }
+
+  @media (max-width: 768px) {
+    padding: 0 5rem 2rem 5rem;
+    flex-direction: column;
+    gap: 2rem;
+    height: auto;
+  }
+
+  @media (max-width: 480px) {
+    padding: 2rem;
+    padding-top: 0;
+  }
 `;
 
-export const NoteBookFrame = styled.div`
+export const DeskContainer = styled.div`
+  position: relative;
   display: flex;
   justify-content: center;
-  width: 53%;
+  width: 50%;
   height: 100%;
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-image: url(${notbookFrame});
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `;
 
-export const NoteBookImageContainer = styled.div`
-  width: 69%;
-  height: 59.5%;
+export const DeskImageContent = styled.div`
+  position: absolute;
   overflow: auto;
-  position: relative;
-  top: 35px;
-  right: 3px;
+  top: 19px;
+  width: 69%;
+  height: 61%;
+
+  @media (max-width: 1080px) {
+    top: 12px;
+  }
+
+  @media (max-width: 380px) {
+    top: 6px;
+  }
 `;
 
 export const ImageFrame = styled.img`
   width: 100%;
+  height: 100%;
 `;
 
-export const IphoneFrame = styled.div`
-  cursor: grab;
+export const Image = styled.img`
+  width: 100%;
+`;
+
+export const PhoneContainer = styled.div`
+  position: relative;
   display: flex;
   justify-content: center;
-  align-items: center;
-  width: 20%;
+  width: 15%;
   height: 100%;
-  background-image: url(${iphoneFrame});
-  background-repeat: no-repeat;
-  background-size: contain;
+
+  @media (max-width: 768px) {
+    width: 38%;
+  }
 `;
 
-export const IphoneImageContainer = styled.div`
-  width: 83%;
-  height: 95%;
+export const PhoneImageContent = styled.div`
+  position: absolute;
   overflow: auto;
-  top: 0px;
-  position: relative;
+  top: 16px;
+  width: 84%;
+  height: 94%;
   border-radius: 27px;
+
+  @media (max-width: 1080px) {
+    width: 86%;
+    height: 95%;
+    top: 8px;
+    border-radius: 15px;
+  }
+
+  @media (max-width: 480px) {
+    top: 6px;
+    border-radius: 9px;
+  }
+
+  @media (max-width: 380px) {
+    top: 5px;
+    border-radius: 8px;
+  }
 `;
 
 export const ReadMeContainer = styled.div`
@@ -65,7 +110,6 @@ export const ReadMeContainer = styled.div`
   border-radius: 8px;
   background-color: #2d2d2d;
 
-  /* Estilos para títulos */
   h1 {
     font-size: 26px;
     font-weight: bolder;
@@ -84,12 +128,10 @@ export const ReadMeContainer = styled.div`
     margin: 1.5rem 0 1rem 0;
   }
 
-  /* Estilos para parágrafos */
   p {
     margin: 0.8rem 0;
   }
 
-  /* Estilos para links */
   a {
     color: #0366d6;
     text-decoration: none;
@@ -99,7 +141,6 @@ export const ReadMeContainer = styled.div`
     }
   }
 
-  /* Estilos para listas */
   ul {
     padding-left: 1.5rem;
   }
@@ -109,7 +150,6 @@ export const ReadMeContainer = styled.div`
     margin-bottom: 0.5rem;
   }
 
-  /* Estilos para tabelas */
   table {
     width: 100%;
     border-collapse: collapse;
@@ -123,13 +163,11 @@ export const ReadMeContainer = styled.div`
     text-align: left;
   }
 
-  /* Estilos para imagens */
   img {
     max-width: 100%;
     max-height: 700px;
   }
 
-  /* Estilos para blocos de código */
   pre,
   code {
     background-color: #f5f5f5;
@@ -139,7 +177,6 @@ export const ReadMeContainer = styled.div`
     font-size: 0.95rem;
   }
 
-  /* Estilos para badges (imagens com estilos como as do Shields.io) */
   img[alt^="!"] {
     display: inline-block;
     margin-right: 0.5rem;

@@ -11,7 +11,7 @@ export const ContainerTitleSection = styled.section`
   height: 700px;
   padding: 0 5rem;
 
-  @media screen and (max-width: 1080px) {
+  @media (max-width: 1080px) {
     padding: 2rem 3rem 0 3rem;
     flex-direction: column;
     gap: 5rem;
@@ -29,7 +29,7 @@ export const MyName = styled.p`
   font-weight: 600;
   margin-bottom: 1rem;
 
-  @media screen and (max-width: 500px) {
+  @media (max-width: 500px) {
     font-size: 16px;
   }
 `;
@@ -38,11 +38,11 @@ export const Title = styled.h1`
   font-size: 72px;
   font-weight: 800;
 
-  @media screen and (max-width: 1460px) {
+  @media (max-width: 1460px) {
     font-size: 42px;
   }
 
-  @media screen and (max-width: 500px) {
+  @media (max-width: 500px) {
     font-size: 22px;
   }
 `;
@@ -52,7 +52,7 @@ export const SecondaryTitle = styled.h2`
   font-size: 34px;
   font-weight: 800;
 
-  @media screen and (max-width: 500px) {
+  @media (max-width: 500px) {
     font-size: 20px;
   }
 `;
@@ -61,12 +61,12 @@ export const ImageIconsTec = styled.img`
   width: 550px;
   height: 550px;
 
-  @media screen and (max-width: 1460px) {
+  @media (max-width: 1460px) {
     width: 450px;
     height: 450px;
   }
 
-  @media screen and (max-width: 500px) {
+  @media (max-width: 500px) {
     width: 250px;
     height: 250px;
   }
@@ -84,7 +84,7 @@ export const AboutMeButton = styled(Button)`
     transition: all 0.03s;
   }
 
-  @media screen and (max-width: 500px) {
+  @media (max-width: 500px) {
     font-size: 12px;
   }
 `;
@@ -108,7 +108,7 @@ export const ContainerTechnologies = styled.section`
     }
   }
 
-  @media screen and (max-width: 500px) {
+  @media (max-width: 500px) {
     margin: 5rem 0;
     background-size: cover;
     height: 100px;
@@ -119,7 +119,7 @@ export const ContainerMyProjects = styled.section`
   margin: 5rem 0;
   padding: 0 5rem;
 
-  @media screen and (max-width: 500px) {
+  @media (max-width: 500px) {
     padding: 0;
     margin: 5rem 3.5rem;
   }
@@ -131,7 +131,7 @@ export const ContentMyProjects = styled.div`
   gap: 2rem;
   margin-top: 2rem;
 
-  @media screen and (max-width: 500px) {
+  @media (max-width: 500px) {
     grid-template-columns: auto;
   }
 `;
@@ -172,7 +172,7 @@ export const CardProject = styled(Card)`
     margin-top: auto;
   }
 
-  @media screen and (max-width: 500px) {
+  @media (max-width: 500px) {
     .p-card-title {
       font-size: 16px;
     }
