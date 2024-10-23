@@ -53,7 +53,7 @@ export const SecondaryTitle = styled.h2`
   font-weight: 800;
 
   @media screen and (max-width: 500px) {
-    font-size: 18px;
+    font-size: 20px;
   }
 `;
 
@@ -147,7 +147,7 @@ export const CardProject = styled(Card)`
   }
 
   .p-card-title {
-    font-size: 1.5rem;
+    font-size: 24px;
     font-weight: bold;
     text-transform: capitalize;
   }
@@ -166,11 +166,17 @@ export const CardProject = styled(Card)`
     align-self: flex-end;
     margin-top: auto;
   }
+
+  @media screen and (max-width: 500px) {
+    .p-card-title {
+      font-size: 16px;
+    }
+  }
 `;
 
 export const DateProject = styled.p`
   margin-top: 0.5rem;
-  font-size: 0.875rem;
+  font-size: 14px;
 `;
 
 export const CardDescription = styled.p`
