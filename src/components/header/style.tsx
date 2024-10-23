@@ -12,7 +12,7 @@ export const Header = styled.header`
   }
   
   @media screen and (max-width: 500px) {
-    padding: 2rem .3rem;
+    padding: 2rem .2rem;
   }
 `;
 

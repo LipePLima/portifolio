@@ -168,6 +168,8 @@ export const CardProject = styled(Card)`
   }
 
   @media screen and (max-width: 500px) {
+    width: calc(100% - 1rem);
+    
     .p-card-title {
       font-size: 16px;
     }
