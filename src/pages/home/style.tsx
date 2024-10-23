@@ -120,7 +120,8 @@ export const ContainerMyProjects = styled.section`
   padding: 0 5rem;
 
   @media screen and (max-width: 500px) {
-    padding: 0 3rem;
+    padding: 0;
+    margin: 5rem 3.5rem;
   }
 `;
 
@@ -129,6 +130,10 @@ export const ContentMyProjects = styled.div`
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 2rem;
   margin-top: 2rem;
+
+  @media screen and (max-width: 500px) {
+    grid-template-columns: auto;
+  }
 `;
 
 export const CardProject = styled(Card)`
@@ -168,8 +173,6 @@ export const CardProject = styled(Card)`
   }
 
   @media screen and (max-width: 500px) {
-    width: calc(100% - 1rem);
-    
     .p-card-title {
       font-size: 16px;
     }

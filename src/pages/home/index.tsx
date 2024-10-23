@@ -79,7 +79,6 @@ const HomePage = () => {
                 myProjects
                   .filter(filterProjects)
                   .sort((a: ProjectDTO, b: ProjectDTO) => {
-                    // Comparar as datas para ordenar do mais novo ao mais antigo
                     return (
                       new Date(b.created_at).getTime() -
                       new Date(a.created_at).getTime()
