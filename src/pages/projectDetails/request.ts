@@ -24,8 +24,6 @@ export const getRepoReadme = async (name: string) => {
       },
     });
 
-    console.log("RESPONSE >>>>>>", response);
-
     if (typeof response.data === "string") {
       return response.data;
     }

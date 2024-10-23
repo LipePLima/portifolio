@@ -38,8 +38,6 @@ const HomePage = () => {
   const fetchRepos = async () => {
     const response = await getMyRepos(setLoading);
 
-    console.log(response);
-
     setMyProjects(response);
   };
 

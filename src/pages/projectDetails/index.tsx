@@ -68,8 +68,6 @@ const ProjectDetails = () => {
         getRepoReadme(name),
       ]);
 
-      console.log(projectResponse);
-
       setProject(projectResponse);
       setReadMe(readmeResponse);
     } catch (error) {
