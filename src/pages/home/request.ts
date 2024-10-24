@@ -2,17 +2,37 @@ import { Dispatch, SetStateAction } from "react";
 import api from "../../service/api";
 
 export const getMyRepos = async (
-  setLoading: Dispatch<SetStateAction<boolean>>
+  page: number,
+  rows: number,
+  setLoading: Dispatch<SetStateAction<boolean>>,
+  setTotalRecords: Dispatch<SetStateAction<number>>
 ) => {
   setLoading(true);
+
+  console.log("PAGE >", page);
+  console.log("ROW >", rows);
 
   try {
     const response = await api.get("/user/repos", {
       params: {
-        per_page: 50,
-        page: 1,
+        per_page: rows + 10,
+        page: page,
       },
     });
+
+    const linkHeader = response.headers["link"];
+
+    if (linkHeader) {
+      const lastPageMatch = linkHeader.match(/&page=(\d+)>; rel="last"/);
+
+      if (lastPageMatch) {
+        const lastPage = parseInt(lastPageMatch[1], 10);
+        const totalRepos = lastPage * rows;
+        setTotalRecords(totalRepos);
+      }
+    } else {
+      setTotalRecords(response.data.length);
+    }
 
     setLoading(false);
 

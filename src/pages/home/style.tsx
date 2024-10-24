@@ -2,6 +2,7 @@ import { Button } from "primereact/button";
 import styled from "styled-components";
 import slideTechs from "../../assets/slideTechs.png";
 import { Card } from "primereact/card";
+import { Paginator } from "primereact/paginator";
 
 export const ContainerTitleSection = styled.section`
   display: flex;
@@ -28,6 +29,7 @@ export const MyName = styled.p`
   font-size: 24px;
   font-weight: 600;
   margin-bottom: 1rem;
+  margin-top: 0;
 
   @media (max-width: 500px) {
     font-size: 16px;
@@ -37,6 +39,7 @@ export const MyName = styled.p`
 export const Title = styled.h1`
   font-size: 72px;
   font-weight: 800;
+  margin: 0;
 
   @media (max-width: 1460px) {
     font-size: 42px;
@@ -159,10 +162,10 @@ export const CardProject = styled(Card)`
 
   .p-card-subtitle {
     color: #f3f4f6;
-    margin-top: 0.5rem;
   }
 
   .p-card-content {
+    padding: 0;
     flex-grow: 1;
   }
 
@@ -180,11 +183,44 @@ export const CardProject = styled(Card)`
 `;
 
 export const DateProject = styled.p`
-  margin-top: 0.5rem;
+  margin: 0;
   font-size: 14px;
 `;
 
 export const CardDescription = styled.p`
   line-height: 22px;
   margin: 1rem 0;
+`;
+
+export const PaginatorProjects = styled(Paginator)`
+  margin-top: 1rem;
+
+  background-color: #2d2d2d;
+
+  .p-paginator-page.p-highlight,
+  .p-paginator-page.p-highlight:hover {
+    background-color: #131313;
+  }
+
+  .p-paginator-icon,
+  .p-dropdown-label,
+  .p-dropdown-trigger-icon,
+  .p-paginator-page,
+  .p-paginator-prev,
+  .p-paginator-next {
+    color: #fff;
+  }
+
+  .p-paginator-last:hover,
+  .p-paginator-next:hover,
+  .p-paginator-prev:hover,
+  .p-paginator-first:hover,
+  .p-paginator-page:hover,
+  .p-focus {
+    background-color: #444444;
+  }
+
+  .p-dropdown {
+    background-color: transparent;
+  }
 `;

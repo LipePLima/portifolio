@@ -105,10 +105,15 @@ export const PhoneImageContent = styled.div`
 `;
 
 export const ReadMeContainer = styled.div`
+  margin: 0 4rem;
   line-height: 1.6;
   padding: 1rem;
   border-radius: 8px;
   background-color: #2d2d2d;
+
+  @media (max-width: 768px) {
+    margin: 0 2rem;
+  }
 
   h1 {
     font-size: 26px;
