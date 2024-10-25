@@ -7,9 +7,9 @@ import { Header } from "./components";
 function App() {
   return (
     <>
-      <Header />
       <BrowserRouter>
         <PrimeReactProvider>
+          <Header />
           <Routes />
         </PrimeReactProvider>
       </BrowserRouter>

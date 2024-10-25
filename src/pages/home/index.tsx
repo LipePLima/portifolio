@@ -7,6 +7,7 @@ import { ProjectDTO } from "../../utils/interfaces";
 import { Button } from "primereact/button";
 import formatDate from "../../utils/convertDate";
 import { Loading } from "../../components";
+import { PaginatorPageChangeEvent } from "primereact/paginator";
 import {
   AboutMeButton,
   CardDescription,
@@ -23,7 +24,7 @@ import {
   SecondaryTitle,
   Title,
 } from "./style";
-import { PaginatorPageChangeEvent } from "primereact/paginator";
+import { useTranslation } from "react-i18next";
 
 const HomePage = () => {
   const [loading, setLoading] = useState<boolean>(false);
@@ -32,6 +33,7 @@ const HomePage = () => {
   const [rows, setRows] = useState(10);
   const [totalRecords, setTotalRecords] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
+  const { t, i18n } = useTranslation();
 
   const navigate = useNavigate();
 
@@ -55,7 +57,7 @@ const HomePage = () => {
   };
 
   const filterProjects = (project: ProjectDTO) => {
-    const excludedKeywords = ["frontend", "backend", "admin"];
+    const excludedKeywords = ["frontend", "backend", "admin", "pvd"];
     return !excludedKeywords.some((keyword) => project.name.includes(keyword));
   };
 
@@ -72,10 +74,10 @@ const HomePage = () => {
           <ContainerTitle>
             <MyName>Felipe Pereira de Lima</MyName>
             <Title>
-              Desenvolvedor De Software <br /> Front-End
+              {t("title")} <br /> Front-End
             </Title>
             <AboutMeButton
-              label="Sobre Mim"
+              label={t("aboutMe")}
               severity="info"
               outlined
               onClick={() => navigate("/aboutMe")}
@@ -83,12 +85,12 @@ const HomePage = () => {
           </ContainerTitle>
           <ImageIconsTec
             src={imgTecs}
-            alt="Imagem com icones 3D das minhas principais stacks"
+            alt="Imagem com icones 3D de algumas stacks"
           />
         </ContainerTitleSection>
-        <ContainerTechnologies></ContainerTechnologies>
+        <ContainerTechnologies />
         <ContainerMyProjects>
-          <SecondaryTitle>Meus Projetos</SecondaryTitle>
+          <SecondaryTitle>{t("myProjects")}</SecondaryTitle>
           {loading && <Loading height="100%" />}
           {!loading && (
             <>
@@ -108,14 +110,14 @@ const HomePage = () => {
                           key={index}
                           title={project.name}
                           subTitle={
-                            project.owner.login !== "LipePLima"
-                              ? "Participação"
-                              : "Autoria"
+                            project.owner.login === "LipePLima"
+                              ? t("authorship")
+                              : t("participation")
                           }
                           footer={
                             <Button
                               style={{ width: "100%" }}
-                              label="Ver mais"
+                              label={t("viewMore")}
                               icon="pi pi-info-circle"
                               onClick={() =>
                                 navigate(`/projeto/${project.name}`, {
@@ -128,12 +130,12 @@ const HomePage = () => {
                           }
                         >
                           <DateProject>
-                            {formatDate(project.created_at)}
+                            {formatDate(project.created_at, i18n.language)}
                           </DateProject>
                           <CardDescription>
                             {project.description
                               ? project.description
-                              : "Sem descrição"}
+                              : t("noDescription")}
                           </CardDescription>
                         </CardProject>
                       );
@@ -143,7 +145,7 @@ const HomePage = () => {
                 first={first}
                 rows={rows}
                 totalRecords={totalRecords}
-                rowsPerPageOptions={[10, 20, 30, 40]}
+                rowsPerPageOptions={[10, 20, 30]}
                 onPageChange={onPageChange}
               />
             </>

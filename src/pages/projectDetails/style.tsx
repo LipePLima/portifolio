@@ -81,10 +81,10 @@ export const PhoneContainer = styled.div`
 export const PhoneImageContent = styled.div`
   position: absolute;
   overflow: auto;
-  top: 16px;
-  width: 84%;
-  height: 94%;
-  border-radius: 27px;
+  top: 13px;
+  width: 85%;
+  height: 95%;
+  border-radius: 19px;
 
   @media (max-width: 1080px) {
     width: 86%;
