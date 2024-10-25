@@ -18,6 +18,10 @@ export const ContainerTitleSection = styled.section`
     gap: 5rem;
     height: auto;
   }
+
+  @media (max-width: 500px) {
+    gap: 2rem;
+  }
 `;
 
 export const ContainerTitle = styled.article`
@@ -73,6 +77,11 @@ export const ImageIconsTec = styled.img`
     width: 250px;
     height: 250px;
   }
+
+  @media (max-width: 420px) {
+    width: 200px;
+    height: 200px;
+  }
 `;
 
 export const AboutMeButton = styled(Button)`
@@ -116,6 +125,11 @@ export const ContainerTechnologies = styled.section`
     background-size: cover;
     height: 100px;
   }
+
+  @media (max-width: 420px) {
+    margin: 5rem 0;
+    height: 80px;
+  }
 `;
 
 export const ContainerMyProjects = styled.section`
@@ -144,7 +158,6 @@ export const CardProject = styled(Card)`
   flex-direction: column;
   justify-content: space-between;
   min-height: 360px;
-  padding: 1rem;
   background-color: #2d2d2d;
   color: #f3f4f6;
 
@@ -190,6 +203,10 @@ export const DateProject = styled.p`
 export const CardDescription = styled.p`
   line-height: 22px;
   margin: 1rem 0;
+
+  @media (max-width: 500px) {
+    font-size: 14px;
+  }
 `;
 
 export const PaginatorProjects = styled(Paginator)`
