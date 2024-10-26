@@ -1,21 +1,18 @@
+import { useTranslation } from "react-i18next";
 import { AboutMeSection, Title } from "./style";
 
 const AboutMePage = () => {
+  const { t } = useTranslation();
+
   return (
     <AboutMeSection>
-      <Title>Sobre Mim</Title>
-      <p>
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Officiis
-        facere voluptates necessitatibus aut ducimus. In quod expedita sit
-        eaque, molestiae necessitatibus reiciendis quam minus laborum error
-        eligendi sunt, consequatur temporibus? Lorem ipsum dolor sit amet
-        consectetur adipisicing elit. Sed labore velit, repellendus dolorem
-        ipsum odit minima, voluptas quas consequatur ut quam officiis eum in
-        explicabo commodi sit, voluptatibus veniam aut. Lorem ipsum dolor sit
-        amet consectetur adipisicing elit. Officia pariatur dolorem modi non
-        animi saepe accusamus eaque! Harum doloribus et, natus totam velit, est
-        cupiditate illum voluptatibus maiores nihil corrupti.
-      </p>
+      <Title>{t("aboutMe")}</Title>
+      <p>{t("aboutMeP1")}</p>
+      <p>{t("aboutMeP2")}</p>
+      <p>{t("aboutMeP3")}</p>
+      <p>{t("aboutMeP4")}</p>
+      <p>{t("aboutMeP5")}</p>
+      <p>{t("aboutMeP6")}</p>
     </AboutMeSection>
   );
 };

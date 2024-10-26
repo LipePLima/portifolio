@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const AboutMeSection = styled.section`
+  min-height: 90vh;
   line-height: 1.6;
   padding: 1rem;
   margin: 2rem 5rem;

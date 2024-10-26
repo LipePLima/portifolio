@@ -13,21 +13,30 @@ export const Header = styled.header`
   padding: 2rem 1rem;
 
   @media screen and (max-width: 1080px) {
-    padding: 2rem .5rem;
+    padding: 2rem 0.5rem;
   }
 
   @media screen and (max-width: 500px) {
-    padding: 2rem .3rem;
+    position: initial;
+    padding: 1rem 0.3rem 0 0.3rem;
   }
 `;
 
 export const ContainerSocialMedias = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  z-index: 1000;
+
+  @media screen and (max-width: 500px) {
+    flex-direction: row;
+    gap: 2vw;
+  }
 `;
 
 export const ContainerTranslatorButton = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: end;
@@ -52,10 +61,15 @@ export const IconButton = styled.button<IconButtonProps>`
 `;
 
 export const DropDownLanguages = styled.div`
+  position: absolute;
+  z-index: 1000;
   display: flex;
   flex-direction: column;
   padding: 0;
-  background-color: #2D2D2D;
+  background-color: #2d2d2d;
+  width: 100px;
+  top: 32px;
+  right: 0;
   border-radius: 15px;
   box-shadow: 2px 2px 2px 0px rgba(19, 19, 19, 0.397);
 `;

@@ -20,6 +20,7 @@ export const ContainerTitleSection = styled.section`
   }
 
   @media (max-width: 500px) {
+    padding: 2rem 1rem 0 1rem;
     gap: 2rem;
   }
 `;
@@ -36,7 +37,7 @@ export const MyName = styled.p`
   margin-top: 0;
 
   @media (max-width: 500px) {
-    font-size: 16px;
+    font-size: 18px;
   }
 `;
 
@@ -50,7 +51,7 @@ export const Title = styled.h1`
   }
 
   @media (max-width: 500px) {
-    font-size: 22px;
+    font-size: 28px;
   }
 `;
 
@@ -97,6 +98,7 @@ export const AboutMeButton = styled(Button)`
   }
 
   @media (max-width: 500px) {
+    margin-top: 1.5rem;
     font-size: 12px;
   }
 `;
@@ -127,7 +129,7 @@ export const ContainerTechnologies = styled.section`
   }
 
   @media (max-width: 420px) {
-    margin: 5rem 0;
+    margin: 3rem 0;
     height: 80px;
   }
 `;
@@ -138,7 +140,7 @@ export const ContainerMyProjects = styled.section`
 
   @media (max-width: 500px) {
     padding: 0;
-    margin: 5rem 3.5rem;
+    margin: 3rem 1rem;
   }
 `;
 
@@ -149,7 +151,7 @@ export const ContentMyProjects = styled.div`
   margin-top: 2rem;
 
   @media (max-width: 500px) {
-    grid-template-columns: auto;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   }
 `;
 
@@ -196,6 +198,7 @@ export const CardProject = styled(Card)`
 `;
 
 export const DateProject = styled.p`
+  min-height: auto;
   margin: 0;
   font-size: 14px;
 `;

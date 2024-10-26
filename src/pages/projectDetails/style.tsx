@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const ProjectDetailsSection = styled.section`
+  min-height: 95vh;
   padding: 2rem 1rem;
 `;
 
