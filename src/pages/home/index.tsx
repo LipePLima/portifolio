@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import imgTecs from "../../assets/tecIconsImage.png";
+import imgTecs from "../../assets/images/tecIconsImage.png";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
 import { getMyRepos } from "./request";

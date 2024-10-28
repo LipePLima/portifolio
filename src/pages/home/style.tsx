@@ -1,6 +1,6 @@
 import { Button } from "primereact/button";
 import styled from "styled-components";
-import slideTechs from "../../assets/slideTechs.png";
+import slideTechs from "../../assets/images/slideTechs.png";
 import { Card } from "primereact/card";
 import { Paginator } from "primereact/paginator";
 

@@ -7,8 +7,8 @@ import emoji from "emoji-dictionary";
 import { Loading } from "../../components";
 import { ProjectsImagesArray } from "../../utils/arrayImages";
 import { Button } from "primereact/button";
-import deskFrame from "../../assets/deskFrame.png";
-import phoneFrame from "../../assets/phoneFrame.png";
+import deskFrame from "../../assets/images/deskFrame.png";
+import phoneFrame from "../../assets/images/phoneFrame.png";
 import { Toast } from "primereact/toast";
 import {
   DeskContainer,

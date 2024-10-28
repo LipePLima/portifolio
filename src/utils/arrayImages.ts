@@ -1,5 +1,5 @@
-import lpRaulDesk from "../assets/lpRaulDesk.png";
-import lpRaulMobile from "../assets/lpRaulMobile.png";
+import lpRaulDesk from "../assets/images/lpRaulDesk.png";
+import lpRaulMobile from "../assets/images/lpRaulMobile.png";
 
 export const ProjectsImagesArray = [
   {
