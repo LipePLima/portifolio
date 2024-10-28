@@ -17,4 +17,5 @@ export const Title = styled.h1`
 
 export const Text = styled.p`
   font-size: 18px;
+  color: #fff;
 `;
