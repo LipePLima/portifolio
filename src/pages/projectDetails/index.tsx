@@ -124,7 +124,7 @@ const ProjectDetails = () => {
               >
                 <Button
                   label={t("openRepositoryButtonLabel")}
-                  severity="help"
+                  severity="info"
                 />
               </a>
             )}
