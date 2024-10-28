@@ -85,8 +85,29 @@ export const ImageIconsTec = styled.img`
   }
 `;
 
+export const LinkButtonContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+
+  @media (max-width: 500px) {
+    margin-top: 1.5rem;
+  }
+
+  a {
+    display: block;
+
+    button {
+      @media (max-width: 500px) {
+        font-size: 12px;
+      }
+    }
+  }
+`;
+
 export const AboutMeButton = styled(Button)`
-  margin-top: 1rem;
   border-color: #3b82f6;
   color: #3b82f6;
 
@@ -98,7 +119,6 @@ export const AboutMeButton = styled(Button)`
   }
 
   @media (max-width: 500px) {
-    margin-top: 1.5rem;
     font-size: 12px;
   }
 `;

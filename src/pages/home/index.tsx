@@ -10,6 +10,8 @@ import { Loading } from "../../components";
 import { PaginatorPageChangeEvent } from "primereact/paginator";
 import { useTranslation } from "react-i18next";
 import { Toast } from "primereact/toast";
+import cvEnglishVersion from "../../assets/pdfs/cvEnglishVersion.pdf";
+import cvPortugueseVersion from "../../assets/pdfs/cvPortugueseVersion.pdf";
 import {
   AboutMeButton,
   CardDescription,
@@ -21,6 +23,7 @@ import {
   ContentMyProjects,
   DateProject,
   ImageIconsTec,
+  LinkButtonContainer,
   MyName,
   PaginatorProjects,
   SecondaryTitle,
@@ -30,6 +33,7 @@ import {
 const HomePage = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const [myProjects, setMyProjects] = useState<ProjectDTO[] | null>(null);
+  const [cvToDownload, setCvToDownload] = useState(cvPortugueseVersion);
   const [first, setFirst] = useState(0);
   const [rows, setRows] = useState(10);
   const [totalRecords, setTotalRecords] = useState(0);
@@ -44,6 +48,12 @@ const HomePage = () => {
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentPage, rows]);
+
+  useEffect(() => {
+    setCvToDownload(
+      i18n.language === "pt-br" ? cvPortugueseVersion : cvEnglishVersion
+    );
+  }, [i18n.language]);
 
   const fetchRepos = async () => {
     const repos = await getMyRepos(
@@ -61,7 +71,13 @@ const HomePage = () => {
   };
 
   const filterProjects = (project: ProjectDTO) => {
-    const excludedKeywords = ["frontend", "backend", "admin", "pvd", "LipePLima"];
+    const excludedKeywords = [
+      "frontend",
+      "backend",
+      "admin",
+      "pvd",
+      "LipePLima",
+    ];
     return !excludedKeywords.some((keyword) => project.name.includes(keyword));
   };
 
@@ -80,12 +96,17 @@ const HomePage = () => {
             <Title>
               {t("title")} <br /> Front-End
             </Title>
-            <AboutMeButton
-              label={t("aboutMe")}
-              severity="info"
-              outlined
-              onClick={() => navigate("/aboutMe")}
-            />
+            <LinkButtonContainer>
+              <AboutMeButton
+                label={t("aboutMe")}
+                severity="info"
+                outlined
+                onClick={() => navigate("/aboutMe")}
+              />
+              <a href={cvToDownload} download="CV Dev Felipe Lima.pdf">
+                <Button label={t("buttonCV")} severity="info" outlined />
+              </a>
+            </LinkButtonContainer>
           </ContainerTitle>
           <ImageIconsTec
             src={imgTecs}
