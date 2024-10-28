@@ -1,21 +1,35 @@
-// import axios from "axios";
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import axios from "axios";
 import api from "../../service/api";
+import { Toast } from "primereact/toast";
+import { TFunction } from "i18next";
 
-export const getMyProjectByName = async (name: string): Promise<void> => {
+export const getMyProjectByName = async (
+  name: string,
+  toast: React.RefObject<Toast>,
+  t: TFunction<"translation", undefined>
+): Promise<any> => {
   try {
     const response = await api.get(`/repos/LipePLima/${name}`);
 
     return response.data;
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (error: any) {
-    console.error(
-      `Erro ao buscar o repositório "${name}": ${error.response?.status} - ${error.response?.data?.message}`
-    );
+    console.error(error);
+
+    toast.current?.show({
+      severity: "error",
+      summary: "Error",
+      detail: `${t("textErrorToast")}`,
+      life: 2000,
+    });
   }
 };
 
-export const getRepoReadme = async (name: string) => {
+export const getRepoReadme = async (
+  name: string,
+  toast: React.RefObject<Toast>,
+  t: TFunction<"translation", undefined>
+): Promise<any> => {
   try {
     const response = await api.get(`/repos/LipePLima/${name}/readme`, {
       headers: {
@@ -32,6 +46,13 @@ export const getRepoReadme = async (name: string) => {
 
     return readmeContent.data;
   } catch (error) {
-    console.error("Erro ao buscar o README:", error);
+    console.error(error);
+
+    toast.current?.show({
+      severity: "error",
+      summary: "Error",
+      detail: `${t("textErrorToast")}`,
+      life: 2000,
+    });
   }
 };

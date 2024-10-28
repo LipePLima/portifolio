@@ -14,3 +14,7 @@ export const Title = styled.h1`
   font-weight: bolder;
   margin: 1.5rem 0 1rem 0;
 `;
+
+export const Text = styled.p`
+  font-size: 18px;
+`;

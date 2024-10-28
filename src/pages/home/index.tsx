@@ -1,13 +1,15 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import imgTecs from "../../assets/tecIconsImage.png";
 import { useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { getMyRepos } from "./request";
 import { ProjectDTO } from "../../utils/interfaces";
 import { Button } from "primereact/button";
 import formatDate from "../../utils/convertDate";
 import { Loading } from "../../components";
 import { PaginatorPageChangeEvent } from "primereact/paginator";
+import { useTranslation } from "react-i18next";
+import { Toast } from "primereact/toast";
 import {
   AboutMeButton,
   CardDescription,
@@ -24,7 +26,6 @@ import {
   SecondaryTitle,
   Title,
 } from "./style";
-import { useTranslation } from "react-i18next";
 
 const HomePage = () => {
   const [loading, setLoading] = useState<boolean>(false);
@@ -34,6 +35,7 @@ const HomePage = () => {
   const [totalRecords, setTotalRecords] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
   const { t, i18n } = useTranslation();
+  const toast = useRef(null);
 
   const navigate = useNavigate();
 
@@ -48,7 +50,9 @@ const HomePage = () => {
       currentPage,
       rows,
       setLoading,
-      setTotalRecords
+      setTotalRecords,
+      toast,
+      t
     );
 
     if (repos) {
@@ -57,7 +61,7 @@ const HomePage = () => {
   };
 
   const filterProjects = (project: ProjectDTO) => {
-    const excludedKeywords = ["frontend", "backend", "admin", "pvd"];
+    const excludedKeywords = ["frontend", "backend", "admin", "pvd", "LipePLima"];
     return !excludedKeywords.some((keyword) => project.name.includes(keyword));
   };
 
@@ -152,6 +156,7 @@ const HomePage = () => {
           )}
         </ContainerMyProjects>
       </main>
+      <Toast ref={toast} />
     </>
   );
 };

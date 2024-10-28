@@ -14,7 +14,7 @@ import {
   IconButton,
 } from "./style";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { Button } from "primereact/button";
 import i18n from "i18next";
 
@@ -24,17 +24,17 @@ const HeaderComponent = () => {
     useState<boolean>(false);
 
   const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
-    const pathname = window.location.pathname;
-
+    const pathname = location.pathname;
+    
     if (pathname.includes("/aboutMe") || pathname.includes("/projeto")) {
       setShowHome(true);
-      console.log("Veio");
     } else {
       setShowHome(false);
     }
-  }, [window.location.pathname]);
+  }, [location]);
 
   const changeLanguage = (language: string) => {
     i18n.changeLanguage(language);
@@ -70,7 +70,7 @@ const HeaderComponent = () => {
             rel="noopener noreferrer"
           >
             <IconButton>
-              <BsGithub />
+              <BsGithub color="#fff" />
             </IconButton>
           </a>
           <a

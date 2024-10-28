@@ -53,6 +53,7 @@ export const IconButton = styled.button<IconButtonProps>`
   &:hover {
     color: ${(props) => props.colorHover || "#60a5fa"};
     transform: scale(1.05);
+    transition: 0.05s;
   }
 
   @media screen and (max-width: 500px) {

@@ -1,16 +1,18 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Dispatch, SetStateAction } from "react";
+import { Toast } from "primereact/toast";
 import api from "../../service/api";
+import { TFunction } from "i18next";
 
 export const getMyRepos = async (
   page: number,
   rows: number,
   setLoading: Dispatch<SetStateAction<boolean>>,
-  setTotalRecords: Dispatch<SetStateAction<number>>
+  setTotalRecords: Dispatch<SetStateAction<number>>,
+  toast: React.RefObject<Toast>,
+  t: TFunction<"translation", undefined>
 ) => {
   setLoading(true);
-
-  console.log("PAGE >", page);
-  console.log("ROW >", rows);
 
   try {
     const response = await api.get("/user/repos", {
@@ -28,6 +30,7 @@ export const getMyRepos = async (
       if (lastPageMatch) {
         const lastPage = parseInt(lastPageMatch[1], 10);
         const totalRepos = lastPage * rows;
+
         setTotalRecords(totalRepos);
       }
     } else {
@@ -37,11 +40,16 @@ export const getMyRepos = async (
     setLoading(false);
 
     return response.data;
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  } catch (error: any) {
+  } catch (error) {
     setLoading(false);
-    console.error(
-      `Erro ao buscar os repositórios: ${error.response?.status} - ${error.response?.data?.message}`
-    );
+
+    console.error(error);
+    
+    toast.current?.show({
+      severity: "error",
+      summary: "Error",
+      detail: `${t("textErrorToast")}`,
+      life: 2000,
+    });
   }
 };

@@ -1,11 +1,15 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { getMyProjectByName, getRepoReadme } from "./request";
 import { useLocation } from "react-router-dom";
 import { marked } from "marked";
 import emoji from "emoji-dictionary";
 import { Loading } from "../../components";
 import { ProjectsImagesArray } from "../../utils/arrayImages";
+import { Button } from "primereact/button";
+import deskFrame from "../../assets/deskFrame.png";
+import phoneFrame from "../../assets/phoneFrame.png";
+import { Toast } from "primereact/toast";
 import {
   DeskContainer,
   FramesContainer,
@@ -17,9 +21,7 @@ import {
   ProjectDetailsSection,
   ReadMeContainer,
 } from "./style";
-import { Button } from "primereact/button";
-import deskFrame from "../../assets/deskFrame.png";
-import phoneFrame from "../../assets/phoneFrame.png";
+import { useTranslation } from "react-i18next";
 
 const ProjectDetails = () => {
   const [loading, setLoading] = useState<boolean>(true);
@@ -30,6 +32,8 @@ const ProjectDetails = () => {
     imageMobilePath: "",
   });
 
+  const toast: React.RefObject<Toast> = useRef(null);
+  const { t } = useTranslation();
   const { state } = useLocation();
 
   useEffect(() => {
@@ -64,14 +68,21 @@ const ProjectDetails = () => {
   const fetchData = async (name: string) => {
     try {
       const [projectResponse, readmeResponse] = await Promise.all([
-        getMyProjectByName(name),
-        getRepoReadme(name),
+        getMyProjectByName(name, toast, t),
+        getRepoReadme(name, toast, t),
       ]);
 
       setProject(projectResponse);
       setReadMe(readmeResponse);
     } catch (error) {
-      console.error("Erro ao buscar dados:", error);
+      console.error(error);
+
+      toast.current?.show({
+        severity: "error",
+        summary: "Error",
+        detail: `${t("textErrorToast")}`,
+        life: 2000,
+      });
     } finally {
       setLoading(false);
     }
@@ -111,19 +122,23 @@ const ProjectDetails = () => {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <Button label="Acessar Repositório" severity="help" />
+                <Button
+                  label={t("openRepositoryButtonLabel")}
+                  severity="help"
+                />
               </a>
             )}
             <div
               dangerouslySetInnerHTML={{
                 __html: readMe
                   ? marked(replacesMarkdownEmojis(readMe), { renderer })
-                  : "<p>README não disponível</p>",
+                  : `<p>${t("noReadme")}</p>`,
               }}
             />
           </ReadMeContainer>
         </ProjectDetailsSection>
       )}
+      <Toast ref={toast} />
     </>
   );
 };

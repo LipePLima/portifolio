@@ -1,5 +1,5 @@
 import { useTranslation } from "react-i18next";
-import { AboutMeSection, Title } from "./style";
+import { AboutMeSection, Text, Title } from "./style";
 
 const AboutMePage = () => {
   const { t } = useTranslation();
@@ -7,12 +7,12 @@ const AboutMePage = () => {
   return (
     <AboutMeSection>
       <Title>{t("aboutMe")}</Title>
-      <p>{t("aboutMeP1")}</p>
-      <p>{t("aboutMeP2")}</p>
-      <p>{t("aboutMeP3")}</p>
-      <p>{t("aboutMeP4")}</p>
-      <p>{t("aboutMeP5")}</p>
-      <p>{t("aboutMeP6")}</p>
+      <Text>{t("aboutMeP1")}</Text>
+      <Text>{t("aboutMeP2")}</Text>
+      <Text>{t("aboutMeP3")}</Text>
+      <Text>{t("aboutMeP4")}</Text>
+      <Text>{t("aboutMeP5")}</Text>
+      <Text>{t("aboutMeP6")}</Text>
     </AboutMeSection>
   );
 };
