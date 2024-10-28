@@ -3,6 +3,10 @@ import styled from "styled-components";
 export const ProjectDetailsSection = styled.section`
   min-height: 95vh;
   padding: 2rem 1rem;
+
+  @media (max-width: 500px) {
+    padding: 2rem .5rem;
+  }
 `;
 
 export const FramesContainer = styled.div`
@@ -114,6 +118,10 @@ export const ReadMeContainer = styled.div`
 
   @media (max-width: 768px) {
     margin: 0 2rem;
+  }
+
+  @media (max-width: 500px) {
+    margin: 0;
   }
 
   h1 {

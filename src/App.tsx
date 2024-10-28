@@ -2,14 +2,15 @@ import { BrowserRouter } from "react-router-dom";
 import Routes from "./routes";
 import { PrimeReactProvider } from "primereact/api";
 import "primereact/resources/themes/lara-light-cyan/theme.css";
-import { Footer, Header } from "./components";
+import { ChangeLanguageButton, Footer, SocialMediasIcons } from "./components";
 
 function App() {
   return (
     <>
       <BrowserRouter>
         <PrimeReactProvider>
-          <Header />
+          <SocialMediasIcons />
+          <ChangeLanguageButton />
           <Routes />
           <Footer />
         </PrimeReactProvider>
