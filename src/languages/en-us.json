@@ -9,6 +9,7 @@
     "textFooter": "Designed and developed by",
     "textErrorToast": "Error fetching data, try again!",
     "openRepositoryButtonLabel": "Access Repository",
+    "openURLButtonLabel": "Access Website",
     "noReadme": "README not available", 
     "loading": "Loading...", 
     "buttonCV": "Download CV",

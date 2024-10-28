@@ -10,7 +10,6 @@ const AboutMePage = () => {
   const { t, i18n } = useTranslation();
 
   useEffect(() => {
-    console.log(i18n.language)
     setCvToDownload(
       i18n.language === "pt-br" ? cvPortugueseVersion : cvEnglishVersion
     );

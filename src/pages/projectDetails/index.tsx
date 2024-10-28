@@ -49,22 +49,6 @@ const ProjectDetails = () => {
     }
   }, [state.name]);
 
-  const renderer = new marked.Renderer();
-
-  renderer.link = function ({ href, text }) {
-    return `<a href="${href}" target="_blank" rel="noopener noreferrer">${text}</a>`;
-  };
-
-  const replacesMarkdownEmojis = (readMe: string) => {
-    const newEmojis = readMe.replace(/:\w+:/g, (name) => {
-      const emojiChar = emoji.getUnicode(name.replace(/:/g, ""));
-
-      return emojiChar ? emojiChar : name;
-    });
-
-    return newEmojis;
-  };
-
   const fetchData = async (name: string) => {
     try {
       const [projectResponse, readmeResponse] = await Promise.all([
@@ -86,6 +70,22 @@ const ProjectDetails = () => {
     } finally {
       setLoading(false);
     }
+  };
+
+  const renderer = new marked.Renderer();
+
+  renderer.link = function ({ href, text }) {
+    return `<a href="${href}" target="_blank" rel="noopener noreferrer">${text}</a>`;
+  };
+
+  const replacesMarkdownEmojis = (readMe: string) => {
+    const newEmojis = readMe.replace(/:\w+:/g, (name) => {
+      const emojiChar = emoji.getUnicode(name.replace(/:/g, ""));
+
+      return emojiChar ? emojiChar : name;
+    });
+
+    return newEmojis;
   };
 
   return (
@@ -121,10 +121,23 @@ const ProjectDetails = () => {
                 href={project.html_url}
                 target="_blank"
                 rel="noopener noreferrer"
+                style={{ marginRight: "1rem" }}
               >
                 <Button
                   label={t("openRepositoryButtonLabel")}
                   severity="info"
+                />
+              </a>
+            )}
+            {project.homepage && (
+              <a
+                href={project.homepage}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Button
+                  label={t("openURLButtonLabel")}
+                  severity="secondary"
                 />
               </a>
             )}
