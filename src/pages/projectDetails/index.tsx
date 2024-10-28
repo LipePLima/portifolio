@@ -20,6 +20,7 @@ import {
   DeskImageContent,
   ProjectDetailsSection,
   ReadMeContainer,
+  LinkButtonContainer,
 } from "./style";
 import { useTranslation } from "react-i18next";
 
@@ -116,31 +117,32 @@ const ProjectDetails = () => {
             </FramesContainer>
           )}
           <ReadMeContainer>
-            {!project.private && (
-              <a
-                href={project.html_url}
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{ marginRight: "1rem" }}
-              >
-                <Button
-                  label={t("openRepositoryButtonLabel")}
-                  severity="info"
-                />
-              </a>
-            )}
-            {project.homepage && (
-              <a
-                href={project.homepage}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Button
-                  label={t("openURLButtonLabel")}
-                  severity="secondary"
-                />
-              </a>
-            )}
+            <LinkButtonContainer>
+              {!project.private && (
+                <a
+                  href={project.html_url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Button
+                    label={t("openRepositoryButtonLabel")}
+                    severity="info"
+                  />
+                </a>
+              )}
+              {project.homepage && (
+                <a
+                  href={project.homepage}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Button
+                    label={t("openURLButtonLabel")}
+                    severity="secondary"
+                  />
+                </a>
+              )}
+            </LinkButtonContainer>
             <div
               dangerouslySetInnerHTML={{
                 __html: readMe

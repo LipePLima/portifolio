@@ -188,3 +188,9 @@ export const ReadMeContainer = styled.div`
     margin-right: 0.5rem;
   }
 `;
+
+export const LinkButtonContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+`;
