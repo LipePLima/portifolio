@@ -5,7 +5,7 @@ export const ProjectDetailsSection = styled.section`
   padding: 2rem 1rem;
 
   @media (max-width: 500px) {
-    padding: 2rem .5rem;
+    padding: 2rem 0.5rem;
   }
 `;
 
@@ -184,7 +184,7 @@ export const ReadMeContainer = styled.div`
 
   pre,
   code {
-    background-color: #f5f5f5;
+    background-color: rgb(64, 64, 64);
     padding: 0.5rem;
     border-radius: 4px;
     font-family: "Courier New", Courier, monospace;

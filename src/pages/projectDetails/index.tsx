@@ -28,25 +28,28 @@ const ProjectDetails = () => {
   const [loading, setLoading] = useState<boolean>(true);
   const [project, setProject] = useState<any>(null);
   const [readMe, setReadMe] = useState<string>("");
-  const [imagesPath, setImagesPath] = useState({
-    imageDeskPath: "",
-    imageMobilePath: "",
-  });
+  const [imageDeskPath, setImageDeskPath] = useState<string>("");
+  const [imageMobilePath, setImageMobilePath] = useState<string>("");
 
   const toast: React.RefObject<Toast> = useRef(null);
   const { t } = useTranslation();
   const { state } = useLocation();
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
     fetchData(state.name);
 
     const images = ProjectsImagesArray.find((item) => item.name === state.name);
 
-    if (images) {
-      setImagesPath({
-        imageDeskPath: images?.imageDeskPath,
-        imageMobilePath: images?.imageMobilePath,
-      });
+    if (images?.imageDeskPath) {
+      setImageDeskPath(images?.imageDeskPath);
+    }
+
+    if (images?.imageMobilePath) {
+      setImageMobilePath(images?.imageMobilePath);
     }
   }, [state.name]);
 
@@ -94,23 +97,23 @@ const ProjectDetails = () => {
       {loading && <Loading height="100vh" />}
       {!loading && (
         <ProjectDetailsSection>
-          {(imagesPath.imageDeskPath || imagesPath.imageMobilePath) && (
+          {(imageDeskPath || imageMobilePath) && (
             <FramesContainer>
-              {imagesPath.imageDeskPath && (
+              {imageDeskPath && (
                 <>
                   <DeskContainer>
                     <ImageFrame src={deskFrame} />
                     <DeskImageContent>
-                      <Image src={imagesPath.imageDeskPath} alt="" />
+                      <Image src={imageDeskPath} alt="" />
                     </DeskImageContent>
                   </DeskContainer>
                 </>
               )}
-              {imagesPath.imageMobilePath && (
+              {imageMobilePath && (
                 <PhoneContainer>
                   <ImageFrame src={phoneFrame} />
                   <PhoneImageContent>
-                    <Image src={imagesPath.imageMobilePath} alt="" />
+                    <Image src={imageMobilePath} alt="" />
                   </PhoneImageContent>
                 </PhoneContainer>
               )}
