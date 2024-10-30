@@ -10,10 +10,12 @@ export const ContainerTranslatorButton = styled.div`
   }
 
   @media screen and (max-width: 500px) {
-    position: fixed;
+    position: absolute;
     width: 30px;
     top: 0;
-    margin: 1rem 0.3rem 0 0.3rem;
+    right: 30px;
+    margin: 0;
+    margin-top: 1rem;
   }
 `;
 
