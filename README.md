@@ -1,9 +1,9 @@
 # Portfolio
 
 ## Descrição | Description
-PT-BR: Portfólio desenvolvido para exibir meus principais projetos, habilidades e experiências como desenvolvedor front-end.
+PT-BR: Este projeto funciona como um portfólio abrangente dos meus trabalhos anteriores, destacando minhas principais realizações e demonstrando as habilidades que definem meu perfil profissional. Dediquei-me a explorar diferentes abordagens para exibir de forma clara e objetiva o que aprendi até o momento. Além disso, procurei estruturar o código deste projeto de maneira que ele se assemelhe ao máximo a um projeto real, reforçando a aplicação prática do meu conhecimento.
 
-EN-US: Portfolio developed to showcase my main projects, skills, and experiences as a front-end developer.
+EN-US: This project serves as a comprehensive portfolio of my previous work, highlighting my key achievements and showcasing the skills that define my professional profile. I dedicated myself to exploring different approaches to clearly and objectively present what I have learned so far. Additionally, I aimed to structure the code for this project to resemble a real-world application as closely as possible, reinforcing the practical application of my knowledge.
 
 ## Tecnologias | Technologies
 
